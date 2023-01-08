@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class NFT extends Model
 {
-    use HasUuids;
     use HasFactory;
     protected $guarded = [];
 }
