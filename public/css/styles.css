@@ -1,0 +1,484 @@
+/* IMPORT */
+@import url("./util.css");
+
+/* override bootstrap css */
+p,
+button {
+    font-family: "Source Serif Pro", serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+footer,
+footerDesc {
+    font-family: "Nunito", sans-serif;
+}
+
+button {
+    border: none;
+    font-family: "Nunito", sans-serif;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+}
+
+button.btn-lg {
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-outline-primary {
+    color: #025959;
+    border-color: #025959;
+}
+
+.btn-primary {
+    background-color: #025959;
+    border-color: #025959;
+    color: white;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+    background-color: #03a696;
+    border-color: #03a696;
+}
+
+.btn-outline-primary.dropdown-toggle.show {
+    background-color: #03a696;
+    border-color: #03a696;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #03a696;
+    border-color: #03a696;
+}
+
+.dropdown-item:hover,
+.dropdown-item:active,
+.dropdown-item:focus {
+    background-color: #03a696;
+    border-color: #03a696;
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: black;
+    background-color: white;
+    border-bottom: 2px solid #025959;
+}
+
+.btn-nav-pill:hover {
+    color: black;
+}
+
+/* .btn-rounded-primary{
+  border-radius: 20px !important;
+  background-color: #025959;
+  border-color: #025959;
+  color: white;
+  padding: 5px 15px !important;
+} */
+
+.card {
+    border-radius: 12px;
+    height: 100%;
+}
+
+@keyframes cardFeaturedNFTAnimation {
+    0% {
+        transform: translateX(16px);
+        transform: translateY(16px);
+        box-shadow: 0px 0px white;
+    }
+    100% {
+        transform: translateX(0px);
+        transform: translateY(0px);
+        box-shadow: 16px 16px #025959;
+    }
+}
+
+.card-featured-nft {
+    animation: 1s ease-in-out 0s 1 cardFeaturedNFTAnimation;
+    width: 25rem;
+    box-shadow: 16px 16px #025959;
+}
+
+.card-featured-nft > img {
+    z-index: 1;
+}
+
+.card-featured-nft > .card-body {
+    position: absolute;
+    height: fit-content;
+    bottom: -100px;
+    width: 100%;
+    z-index: 9999;
+    transition: all 0.3s ease-in;
+    opacity: 0;
+}
+
+.card-featured-nft:hover > .card-body {
+    bottom: 0;
+    opacity: 1;
+}
+
+.card-nft {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.card,
+.card-img-top {
+    overflow: hidden;
+    border: none;
+}
+
+.card img {
+    object-fit: cover;
+    object-position: center center;
+}
+
+.card-title {
+    font-weight: 900;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Header */
+header {
+    min-height: 100vh;
+    background-image: url("../images/bg-header.jpg");
+    background-size: cover;
+    background-position: center center;
+}
+
+.header__title {
+    font-size: 4.5rem;
+    font-weight: bold;
+}
+
+header > nav a {
+    color: black;
+}
+
+/* Profile */
+.vl {
+    border-left: 5px solid #025959;
+    height: 500px;
+}
+
+.settings-list-group:hover {
+    background: #025959;
+    color: white;
+    opacity: 0.9;
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}
+
+.profile-picture input {
+    display: none;
+}
+
+.image-group:hover {
+    cursor: pointer;
+}
+
+.image-group:hover .img-thumbnail {
+    opacity: 0.8;
+}
+
+.profile-picture img {
+    object-fit: cover;
+}
+
+.profile-form-label {
+    font-weight: bold;
+}
+
+.image-group {
+    position: relative;
+}
+
+.image-icon-container {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-icon {
+    width: 20px;
+    filter: invert(98%);
+}
+
+/* Login/Register */
+
+@keyframes titleSlide {
+    0% {
+        transform: translateY(-15%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes formSlide {
+    0% {
+        transform: translateX(10%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.title-animation {
+    animation: 0.8s ease-in-out 0s 1 titleSlide;
+}
+
+.form-animation {
+    animation: 0.8s ease-out 0s 1 formSlide;
+}
+
+.togglePassword {
+    position: absolute;
+    top: -30px;
+    right: 7px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+@media screen and (max-width: 767.5px) {
+    .vertical-line {
+        display: none;
+    }
+}
+
+/* Login/Register End */
+
+/* FOOTER */
+
+#footer {
+    bottom: 0;
+    width: 100%;
+}
+
+.nav {
+    position: relative;
+    left: 230px;
+    margin: 10px;
+}
+
+.navbar-brand {
+    position: relative;
+    left: 0px;
+    right: 0px;
+    margin: 0px;
+}
+
+.logo-image {
+    width: 90px;
+    height: 90px;
+    /* border-radius: 50%; */
+    overflow: hidden;
+    margin-top: -6px;
+}
+
+.form {
+    padding-right: 16px;
+}
+
+.row {
+    text-align: left;
+}
+
+.p-3 {
+    text-align: left;
+}
+
+.slide-prev,
+.slide-next {
+    position: absolute;
+    opacity: 0;
+    background: none;
+    border: none;
+
+    display: table-cell;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: center;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 0;
+    color: #808a92;
+    mix-blend-mode: difference;
+    transition: all 0.3s;
+}
+
+.slide-prev:focus,
+.slide-next:focus {
+    outline: none;
+}
+
+.slide-prev:hover,
+.slide-next:hover {
+    color: white;
+}
+
+.slide-prev {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slide-next {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+#mostPopularWrapper:hover > button {
+    opacity: 1;
+    padding: 1rem;
+    font-size: 2.5rem;
+}
+
+.nft-countdown-timer {
+    background-color: #bbd1f32f;
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.current-nft {
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.current-nft img {
+    height: 100%;
+    width: 100%;
+}
+
+.profile {
+    margin-bottom: 1.25rem;
+}
+
+div.profile > img {
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.accordion-button {
+    color: #025959;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #03a69621;
+    color: #025959;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+}
+
+#placeBidForm > #price {
+    display: none;
+}
+
+#my-chart {
+    --color: #03a69659;
+    height: 15rem;
+    width: 100%;
+    /* max-width: 300px; */
+    margin: 0 auto;
+}
+
+#my-chart th {
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.9rem;
+}
+
+#offersTable th {
+    font-weight: normal;
+}
+
+#offersTable td {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+#offersTable a {
+    color: #03a696;
+    text-decoration: none;
+}
+
+/* Table Pagination */
+.page-item .page-link {
+    background-color: #025959;
+    color: white;
+    border: none;
+}
+
+.page-item .page-link:hover {
+    background-color: #03a696;
+    color: white;
+    border: none;
+}
+
+#sortDropdownButton {
+    background-color: #025959;
+    color: white;
+    border: none;
+}
+
+#sortDropdownButton:hover {
+    background-color: #03a696;
+    color: white;
+    border: none;
+}
+
+/* background color */
+.bg-primary {
+    background-color: #025959 !important;
+}
+
+.bg-black {
+    background-color: black;
+}
+
+/* text color */
+.text-primary {
+    color: #025959 !important;
+}
+
+.text-tertiary {
+    color: #03a696 !important;
+}
