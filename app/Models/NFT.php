@@ -9,4 +9,5 @@ class NFT extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $table = 'nft';
 }
