@@ -19,6 +19,7 @@ class NFTSeeder extends Seeder
             [
                 'name' => 'nft1',
                 'image' => 'https://picsum.photos/200/300',
+                'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, autem officia sint voluptatum magnam omnis nisi non aut similique tempore.',
                 'price' => 10000,
 
                 'owner_id' => 1,
@@ -28,6 +29,7 @@ class NFTSeeder extends Seeder
             [
                 'name' => 'nft2',
                 'image' => 'https://picsum.photos/200/300',
+                'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, autem officia sint voluptatum magnam omnis nisi non aut similique tempore.',
                 'price' => 12000,
 
                 'owner_id' => 2,
@@ -37,6 +39,7 @@ class NFTSeeder extends Seeder
             [
                 'name' => 'nft3',
                 'image' => 'https://picsum.photos/200/300',
+                'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, autem officia sint voluptatum magnam omnis nisi non aut similique tempore.',
                 'price' => 15000,
 
                 'owner_id' => 3,

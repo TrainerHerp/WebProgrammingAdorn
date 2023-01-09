@@ -9,14 +9,14 @@
     <div class="row">
       <div class="col-5">
         <div class="current-nft rounded-3">
-          <img id="transactionNFTImage" src="{{ $nft->image_url }}" class="card-img-top img-fluid"
+          <img id="transactionNFTImage" src="{{ '/' . $nft->image }}" class="card-img-top img-fluid"
             alt="{{ $nft->name }}" />
         </div>
       </div>
       <div class="col-6">
         <div>
           <div class="profile d-flex align-items-center">
-            <img src={{ '/' . $owner->image_url }} alt="" />
+            <img src={{ '/' . $owner->image }} alt="" />
             <h6 class="text-black-50 m-1">
               <a href="/user/{{ $owner->id }}" class="text-tertiary text-decoration-none"
                 id="transactionSeller">{{ $owner->username }}</a>
