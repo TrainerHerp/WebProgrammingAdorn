@@ -1,8 +1,8 @@
-<nav class="text-black navbar navbar-dark navbar-expand-lg mb-5 sticky-top bg-primary">
+<nav class="text-black navbar navbar-dark navbar-expand-lg sticky-top bg-primary">
   <div class="container-fluid ms-5">
     <a class="navbar-brand" href="./index.html">
       <div class="logo-image">
-        <img src="./images/LogoAdorn.1.png" class="img-fluid" />
+        <img src="{{ asset('storage/img/adorn/LogoAdorn.1.png') }}" class="img-fluid" />
       </div>
     </a>
     <a class="navbar-brand me-auto" style="left: 50px; font-weight: bolder; font-size: 30px" href="./index.html">Adorn</a>

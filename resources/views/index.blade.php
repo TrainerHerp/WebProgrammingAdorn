@@ -5,51 +5,44 @@
 @endsection
 
 @section('content')
-  <header class="container-fluid p-0">
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-6">
-          <h1 class="text-white header__title">
-            Discover, create, and sell <br />
-            extraordinary
-            <span class="text-primary">NFTs</span>
-          </h1>
-          <p class="text-white lh-base fs-5 mt-4">
-            The world's largest marketplace for non fungible token <br />
-            (NFT) artist and collector!
-          </p>
-          <button class="btn btn-primary btn-lg mt-4 fw-light">
-            Get Started
-          </button>
-        </div>
-        <div class="col-6 d-flex justify-content-center">
-          <div class="card card-featured-nft">
-            <img src="./images/featured/galaxies.jpeg" class="card-img-top" style="height: 100%" alt="..." />
-            <div class="card-body bg-light">
-              <div class="row mb-3">
-                <div class="col">
-                  <h6 class="text-secondary">Art</h6>
-                  <h4 class="card-title text-uppercase text-primary">
-                    Galaxies
-                  </h4>
-                </div>
-                <div class="col d-flex text-end align-items-center justify-content-end">
-                  <h2 class="mb-0 fw-bold">0.988 ETH</h2>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <a href="transaction.html?src=./images/featured/galaxies.jpeg&nftName=Galaxies&currentBid=0.998"
-                    class="btn btn-primary w-100">Place a bid</a>
-                </div>
-              </div>
+    {{-- Part 1 --}}
+    <header class="container-fluid p-0 part1-bg">
+        <div class="container py-5">
+        <div class="row">
+            <div class="col-6">
+            <h1 class="text-white header__title">
+                Discover, create, and sell <br />
+                extraordinary
+                <span class="text-primary">NFTs</span>
+            </h1>
+            <p class="text-white lh-base fs-5 mt-4">
+                The world's largest marketplace for non fungible token <br />
+                (NFT) artist and collector!
+            </p>
+            <button class="btn btn-primary btn-lg mt-4 fw-light">
+                Get Started
+            </button>
             </div>
-          </div>
+            <div class="col-6 d-flex justify-content-center">
+            <div class="card card-featured-nft">
+                <img src="{{ asset('storage/img/adorn/galaxies.jpeg') }}" class="card-img-top" style="height: 100%" alt="..." />
+                <div class="card-body bg-light header-img-bg">
+                    <div class="row mb-3">
+                        <div class="col">
+                        <h6 class="text-secondary">NFT</h6>
+                        <h4 class="card-title text-uppercase text-primary">
+                            Find an NFT of your own!
+                        </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </header>
+        </div>
+    </header>
 
+    {{-- Part 2 --}}
   <section class="statistic-numbers bg-dark container-fluid py-5">
     <div class="container">
       <div class="row">
@@ -353,146 +346,23 @@
   </section>
 
   <!-- Category -->
-  <section class="bg-light text-black container-fluid py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col d-flex">
-          <h2 class="fw-bold mb-0 mx-auto">Category</h2>
-        </div>
-        <!-- Row 1 -->
-        <div class="row row-flex align-items-center mx-auto justify-content-around" style="margin-top: 2rem">
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-category-art.png" class="card-img-top rounded align-items-center mx-auto"
-              style="height: 10rem; width: 10rem" alt="Art" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Art
-                  </button>
-                </div>
+  <section class="text-black container py-5">
+    <h2 class="fw-bold mb-0 mx-auto">Category</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
+        @foreach ($category as $items)
+          <div class="col">
+            <div class="card h-100 text-center mb-3" style="...">
+              <img class="card-img text-center" src="{{ '/'.$items['image'] }}" alt="Image Not Found" style="height:20rem; width:auto">
+              <div class="card-body">
+                <h5 class="card-title">{{ $items->name }}</h5>
               </div>
+              {{-- <div class="flex"> --}}
+                {{-- UPDATE --}}
+                {{-- <a href="/detail/{{ $post->id }}" type="submit" class="btn btn-dark w-50">More Detail</a> --}}
+              {{-- </div> --}}
             </div>
           </div>
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-category-collection.png"
-              class="card-img-top rounded align-items-center mx-auto" style="height: 10rem; width: 10rem"
-              alt="Collection" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Collection
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-category-domain.png"
-              class="card-img-top rounded align-items-center mx-auto" style="height: 10rem; width: 10rem"
-              alt="Domain" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Domain
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Row 2 -->
-        <div class="row row-flex align-items-center mx-auto justify-content-around">
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-category-music.png"
-              class="card-img-top rounded align-items-center mx-auto" style="height: 10rem; width: 10rem"
-              alt="Music" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Music
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-category-photography1.png"
-              class="card-img-top rounded align-items-center mx-auto" style="height: 10rem; width: auto"
-              alt="Photography" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Photography
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-cateogry-sport1.png"
-              class="card-img-top rounded align-items-center mx-auto" style="height: 10rem; width: 10rem"
-              alt="Sport" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Sport
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Row 3 -->
-        <div class="row row-flex align-items-center mx-auto justify-content-around">
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-category-card.png" class="card-img-top rounded align-items-center mx-auto"
-              style="height: 10rem; width: 10rem" alt="Trading Card" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Trading card
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-category-utility.png"
-              class="card-img-top rounded align-items-center mx-auto" style="height: 10rem; width: 10rem"
-              alt="Utility" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Utility
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card w-25 bg-light">
-            <img src="./assets/category/index-category-virtual world.png"
-              class="card-img-top rounded align-items-center mx-auto" style="height: 10rem; width: auto"
-              alt="Virtual World" />
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div class="row mb-3">
-                <div class="col text-center">
-                  <button class="btn btn-primary btn-block btn-lg text-white font-weight-bold">
-                    Virtual World
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        @endforeach
     </div>
   </section>
   <!-- Category end-->

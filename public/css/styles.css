@@ -175,6 +175,10 @@ header > nav a {
     color: black;
 }
 
+.part1-bg {
+    background: linear-gradient(20deg, rgba(5,56,33,1) 1%, rgba(2,0,36,1) 40%, rgba(5,56,33,1) 100%);
+}
+
 /* Profile */
 .vl {
     border-left: 5px solid #025959;
@@ -290,7 +294,7 @@ header > nav a {
 .nav {
     position: relative;
     left: 230px;
-    margin: 10px;
+    margin-bottom: 3rem 3rem 3rem 0%;
 }
 
 .navbar-brand {
