@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('nft', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("image_url");
+            $table->string("description");
+            $table->string("image");
             $table->decimal("price", 16);
 
-//          untuk cek apakah sudah dijual
+            //          untuk cek apakah sudah dijual
             $table->foreignId("owner_id")->constrained("users");
             $table->foreignId("creator_id")->constrained("users");
             $table->foreignId("category_id")->constrained("category");

@@ -17,31 +17,31 @@ class NFTSeeder extends Seeder
     {
         NFT::insert([
             [
-                'name'=>'nft1',
-                'image_url'=>'https://picsum.photos/200/300',
-                'price'=>10000,
+                'name' => 'nft1',
+                'image' => 'https://picsum.photos/200/300',
+                'price' => 10000,
 
-                'owner_id'=>1,
-                'creator_id'=>1,
-                'category_id'=>1
+                'owner_id' => 1,
+                'creator_id' => 1,
+                'category_id' => 1
             ],
             [
-                'name'=>'nft2',
-                'image_url'=>'https://picsum.photos/200/300',
-                'price'=>12000,
+                'name' => 'nft2',
+                'image' => 'https://picsum.photos/200/300',
+                'price' => 12000,
 
-                'owner_id'=>2,
-                'creator_id'=>2,
-                'category_id'=>2
+                'owner_id' => 2,
+                'creator_id' => 2,
+                'category_id' => 2
             ],
             [
-                'name'=>'nft3',
-                'image_url'=>'https://picsum.photos/200/300',
-                'price'=>15000,
+                'name' => 'nft3',
+                'image' => 'https://picsum.photos/200/300',
+                'price' => 15000,
 
-                'owner_id'=>3,
-                'creator_id'=>3,
-                'category_id'=>3
+                'owner_id' => 3,
+                'creator_id' => 3,
+                'category_id' => 3
             ]
         ]);
     }

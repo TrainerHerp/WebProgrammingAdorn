@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\NFT;
+use App\Models\User;
 
 class NFTController extends Controller
 {
@@ -45,7 +47,14 @@ class NFTController extends Controller
      */
     public function show($id)
     {
-        //
+        $nft = NFT::find($id);
+        $creator = User::find($nft->creator_id);
+        $owner = User::find($nft->owner_id);
+        return view('show', [
+            'nft' => $nft,
+            'owner' => $owner,
+            'creator' => $creator
+        ]);
     }
 
     /**

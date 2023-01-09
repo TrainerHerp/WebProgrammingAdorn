@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("username");
             $table->string("email")->unique();
             $table->string("password");
+            $table->string("image")->default(""); // kasih gambar avatar
             $table->decimal("balance", 16)->default(0);
             $table->timestamps();
         });
