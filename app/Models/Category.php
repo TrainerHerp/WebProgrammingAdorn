@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
     protected $table = 'category';
+
+    public function nfts()
+    {
+        return $this->hasMany(NFT::class, 'category_id');
+    }
 }

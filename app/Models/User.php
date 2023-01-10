@@ -20,4 +20,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     protected $guarded = [];
+
+    public function nfts()
+    {
+        return $this->hasMany(NFT::class, 'owner_id');
+    }
 }
