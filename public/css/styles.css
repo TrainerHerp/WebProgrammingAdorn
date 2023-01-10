@@ -158,11 +158,28 @@ button.btn-lg {
     padding: 1.5rem;
 }
 
+.card-img, .most-popular {
+    justify-content: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-img {
+    width: 15rem;
+    margin-top: 2rem;
+
+}
+
+.card-img-container {
+    height: 20rem;
+    display: flex;
+}
+
 .category-cards {
     justify-content: center;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 /* Header */
