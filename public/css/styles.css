@@ -183,7 +183,12 @@ header > nav a {
 }
 
 .part1-bg {
-    background: linear-gradient(20deg, rgba(5,56,33,1) 1%, rgba(2,0,36,1) 40%, rgba(5,56,33,1) 100%);
+    background: linear-gradient(
+        20deg,
+        rgba(5, 56, 33, 1) 1%,
+        rgba(2, 0, 36, 1) 40%,
+        rgba(5, 56, 33, 1) 100%
+    );
 }
 
 /* Profile */
@@ -492,4 +497,15 @@ div.profile > img {
 
 .text-tertiary {
     color: #03a696 !important;
+}
+
+/* border color */
+.border-primary {
+    border-color: #025959 !important;
+}
+
+/* Show Page */
+#transactionNFTImage {
+    max-height: 500px;
+    max-width: 526px;
 }

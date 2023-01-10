@@ -90,4 +90,9 @@ class NFTController extends Controller
     {
         //
     }
+
+    public function viewExplore()
+    {
+        return view('explore');
+    }
 }

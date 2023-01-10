@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NFTController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,16 @@ use App\Http\Controllers\NFTController;
 
 Route::get('/', [CategoryController::class, 'viewHome']);
 
+Route::resource('user', UserController::class);
+
+Route::resource('transaction', TransactionController::class);
+
 Route::resource('nft', NFTController::class);
+
+Route::get('/login', [UserController::class, 'viewLogin']);
+
+Route::get('/register', [UserController::class, 'viewRegister']);
+
+Route::get('/rankings', [UserController::class, 'viewRankings']);
+
+Route::get('/explore', [NFTController::class, 'viewExplore']);

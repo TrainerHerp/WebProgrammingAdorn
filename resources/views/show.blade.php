@@ -5,58 +5,53 @@
 @endsection
 
 @section('content')
-  <div class="container pb-5">
+  <div class="container pb-5 mt-5">
     <div class="row">
-      <div class="col-5">
+      <div class="col-5 me-4">
         <div class="current-nft rounded-3">
-          <img id="transactionNFTImage" src="{{ '/' . $nft->image }}" class="card-img-top img-fluid"
-            alt="{{ $nft->name }}" />
+          <img id="transactionNFTImage" src="{{ $nft->image }}" class="card-img-top img-fluid" alt="{{ $nft->name }}" />
         </div>
       </div>
-      <div class="col-6">
-        <div>
-          <div class="profile d-flex align-items-center">
-            <img src={{ '/' . $owner->image }} alt="" />
-            <h6 class="text-black-50 m-1">
-              <a href="/user/{{ $owner->id }}" class="text-tertiary text-decoration-none"
-                id="transactionSeller">{{ $owner->username }}</a>
-            </h6>
-          </div>
-          <h2 id="transatctionNFTName" style="font-weight: 900">
-            {{ $nft->name }}
-          </h2>
-          <p class="mt-2">
-            {{ $nft->description }}
-          </p>
-          <div class="mt-4">
-            <form id="placeBidForm" class="w-75 mb-3" action="">
-              <div class="input-group">
-                <input id="myBid" type="number" min="0" class="form-control"
-                  aria-label="Text input with dropdown button" />
-                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Metamask
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="#">Metamask</a></li>
-                  <li><a class="dropdown-item" href="#">AlphaWallet</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Coinbase</a>
-                  </li>
-                </ul>
-              </div>
-              <div id="price" class="text-black-50" style="height: 12px">
-                Rp <span>0</span>
-              </div>
-              <div class="mt-4">
-                <button class="btn btn-primary w-75 mb-2">
-                  Place your bid
-                  <i class="bi bi-arrow-right"></i>
-                </button>
-              </div>
-            </form>
-          </div>
+      <div class="col-6 border border-2 border-primary p-4 rounded-3">
+        <div class="profile d-flex align-items-center">
+          <img src={{ '/' . $owner->image }} alt="">
+          <h6 class="text-black-50 m-1">
+            <a href="/user/{{ $owner->id }}" class="text-tertiary text-decoration-none"
+              id="transactionSeller">{{ $owner->username }}</a>
+          </h6>
         </div>
+        <h2 id="transatctionNFTName" style="font-weight: 900">
+          {{ $nft->name }}
+        </h2>
+        <p class="mt-2">
+          {{ $nft->description }}
+        </p>
+        @if ($creator->id == $owner->id)
+          <h5 class="mt-4">Price: Rp {{ $nft->price }}</h5>
+        @endif
+        <h6 class="mt-2">Created by: <a href="/user/{{ $creator->id }}"
+            class="text-tertiary text-decoration-none">{{ $creator->username }}</a></h6>
+        @auth
+          @if ($creator->id == $owner->id && Auth::user()->id != $owner->id)
+            <div class="mt-4">
+              <form id="placeBidForm" class="w-75 mb-3" action="/buy/{{ $nft->id }}" method="post">
+                <div class="input-group">
+                  <button class="btn btn-primary" type="submit">Buy NFT</button>
+                  <select class="form-select">
+                    <option value="1" selected>OVO</option>
+                    <option value="2">GoPay</option>
+                    <option value="3">Virtual Account</option>
+                    <option value="4">Credit Card</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          @endif
+        @else
+          <h4 class="mt-5 text-center">
+            <a href="/login" class="text-tertiary text-decoration-none">Login To Buy NFT</a>
+          </h4>
+        @endauth
       </div>
     </div>
   </div>

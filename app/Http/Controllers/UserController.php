@@ -81,4 +81,19 @@ class UserController extends Controller
     {
         //
     }
+
+    public function viewLogin()
+    {
+        return view('login');
+    }
+
+    public function viewRegister()
+    {
+        return view('register');
+    }
+
+    public function viewRankings()
+    {
+        return view('rankings');
+    }
 }
