@@ -25,7 +25,7 @@
             </div>
             <div class="col-6 d-flex justify-content-center">
             <div class="card card-featured-nft">
-                <img src="{{ asset('storage/img/adorn/galaxies.jpeg') }}" class="card-img-top" style="height: 100%" alt="..." />
+                <img src="{{ asset('image/adorn/galaxies.jpeg') }}" class="card-img-top" style="height: 100%" alt="..." />
                 <div class="card-body bg-light header-img-bg">
                     <div class="row mb-3">
                         <div class="col">
@@ -352,7 +352,7 @@
         @foreach ($category as $items)
           <div class="col">
             <div class="card h-100 text-center mb-3" style="...">
-              <img class="card-img text-center" src="{{ '/'.$items['image'] }}" alt="Image Not Found" style="height:20rem; width:auto">
+              <img class="card-img text-center category-cards" src="{{ '/'.$items['image'] }}" alt="Image Not Found" style="height:15rem; width:15rem">
               <div class="card-body">
                 <h5 class="card-title">{{ $items->name }}</h5>
               </div>

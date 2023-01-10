@@ -158,6 +158,13 @@ button.btn-lg {
     padding: 1.5rem;
 }
 
+.category-cards {
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Header */
 header {
     min-height: 100vh;

@@ -18,32 +18,32 @@ class CategorySeeder extends Seeder
     {
         DB::table('category')->insert([
             'name' => "Art",
-            'image' => "storage/img/category/index-category-art.png",
+            'image' => "image/category/art.png",
         ]);
 
         DB::table('category')->insert([
             'name' => "Card",
-            'image' => "storage/img/category/index-category-card.png",
+            'image' => "image/category/card.png",
         ]);
 
         DB::table('category')->insert([
             'name' => "Music",
-            'image' => "storage/img/category/index-category-music.png",
+            'image' => "image/category/music.png",
         ]);
 
         DB::table('category')->insert([
             'name' => "Photography",
-            'image' => "storage/img/category/index-category-photography1.png",
+            'image' => "image/category/photography.png",
         ]);
 
         DB::table('category')->insert([
             'name' => "Virtual World",
-            'image' => "storage/img/category/index-category-virtual world.png",
+            'image' => "image/category/virtualworld.png",
         ]);
 
         DB::table('category')->insert([
             'name' => "Sport",
-            'image' => "storage/img/category/index-cateogry-sport1.png",
+            'image' => "image/category/sport.png",
         ]);
     }
 }
