@@ -182,6 +182,19 @@ button.btn-lg {
     margin: auto;
 }
 
+.page-item.active .page-link {
+    color: white;
+    background-color: #2a7c7c;
+    border-color: slategray;
+  }
+
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+    z-index: 3;
+    color: white;
+    background-color: slategray;
+    border-color: #ddd;
+}
+
 /* Header */
 header {
     min-height: 100vh;

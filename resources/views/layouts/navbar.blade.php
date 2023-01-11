@@ -1,6 +1,6 @@
 <nav class="text-black navbar navbar-dark navbar-expand-lg sticky-top bg-primary">
   <div class="container-fluid ms-5">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="/">
       <div class="logo-image">
         <img src="{{ asset('image/adorn/LogoAdorn.1.png') }}" class="img-fluid" />
       </div>
