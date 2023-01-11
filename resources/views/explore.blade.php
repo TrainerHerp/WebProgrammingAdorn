@@ -17,6 +17,63 @@
                         <button class="btn btn-outline-primary" type="submit" id="button-addon1">
                             <i class="bi bi-search"></i>
                         </button>
+                        <div class="dropdown ms-2">
+                            <button class="btn btn-primary" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fs-5 mb-0 bi bi-sort-down"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{{request()->fullUrlWithQuery(['sort'=>'newest'])}}">
+                                        Newest
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{{request()->fullUrlWithQuery(['sort'=>'low_price'])}}">
+                                        Lowest Price
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{{request()->fullUrlWithQuery(['sort'=>'high_price'])}}">
+                                        Highest Price
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="dropdown ms-2">
+                            <button class="btn btn-primary" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fs-5 mb-0 bi bi-filter"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{{request()->fullUrlWithoutQuery(['category'])}}">
+                                        All
+                                        @if(!request()->query('category'))
+                                            <i class="bi bi-check text-primary"></i>
+                                        @endif
+                                    </a>
+                                </li>
+
+                                @foreach($categories as $category)
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="{{request()->fullUrlWithQuery(['category'=>$category->id  ])}}">
+                                            {{$category->name}}
+                                            @if(request()->get('category') == $category->id)
+                                                <i class="bi bi-check text-primary"></i>
+                                            @endif
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -35,9 +92,9 @@
                                     Rp. {{number_format($nft->price, 2, ',', '.')}}
                                 </h4>
                             </div>
-                            <button class="btn-outline-primary btn">
+                            <a href="{{route('nft.show', $nft->id)}}" class="btn-outline-primary btn">
                                 Buy
-                            </button>
+                            </a>
                         </div>
                     </div>
                 @endforeach

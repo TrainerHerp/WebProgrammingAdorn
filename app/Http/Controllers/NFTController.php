@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\NFT;
 use App\Models\User;
@@ -93,8 +94,38 @@ class NFTController extends Controller
 
     public function viewExplore(Request $request)
     {
-        $nfts = NFT::with('category')->where('name', 'like', "%{$request->query('search')}%")->get();
-        return view('explore', compact("nfts"));
+//        get column
+        $sort_column = 'nft.created_at';
+        $direction = 'desc';
+        if ($request->has("sort")) {
+            $sort = $request->query('sort');
+
+            if ($sort != 'newest') {
+                $sort_column = 'nft.price';
+            }
+
+            if ($sort == 'low_price') {
+                $direction = 'asc';
+            }
+        }
+
+
+        $nfts = NFT::whereHas('category', function ($query) use ($request) {
+            if ($request->has("category")) {
+                $category_id = $request->query('category');
+                $query->where("category_id", '=', $category_id);
+            }
+
+            if ($request->has('search')) {
+                $query->where("nft.name", 'like', "%{$request->query('search')}%");
+            }
+
+        })->orderBy($sort_column, $direction)->get();
+
+
+        $categories = Category::all();
+
+        return view('explore', compact("nfts", 'categories'));
     }
 
 }

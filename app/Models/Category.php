@@ -14,6 +14,6 @@ class Category extends Model
 
     public function nfts()
     {
-        return $this->hasMany(NFT::class, 'category_id');
+        return $this->hasMany(NFT::class);
     }
 }
