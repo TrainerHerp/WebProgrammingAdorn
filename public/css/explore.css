@@ -1,0 +1,14 @@
+.nft-image {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 8px;
+}
+
+.category-badge {
+    top: 0.75rem;
+    right: 0.75rem;
+    background-color: rgba(239, 239, 239, 0.9);
+    border-radius: 6px;
+}
