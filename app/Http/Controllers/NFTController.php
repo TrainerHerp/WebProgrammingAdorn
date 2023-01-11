@@ -120,7 +120,7 @@ class NFTController extends Controller
                 $query->where("nft.name", 'like', "%{$request->query('search')}%");
             }
 
-        })->orderBy($sort_column, $direction)->get();
+        })->orderBy($sort_column, $direction)->paginate(20);
 
 
         $categories = Category::all();

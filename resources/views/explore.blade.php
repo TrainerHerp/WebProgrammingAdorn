@@ -3,7 +3,6 @@
 @section('title')
     Explore
 @endsection
-{{--TODO add pagination--}}
 @section('content')
     <!-- EXPLORE SECTION -->
     <section class="my-5">
@@ -99,7 +98,9 @@
                     </div>
                 @endforeach
             </div>
-
+            <div class="mt-5 d-flex justify-content-end">
+                {{$nfts->withQueryString()->links()}}
+            </div>
         </div>
 
     </section>
