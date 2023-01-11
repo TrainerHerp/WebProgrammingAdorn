@@ -4,11 +4,37 @@
     Explore
 @endsection
 @section('content')
-    <!-- EXPLORE SECTION -->
+    <section class="my-5 pb-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">Top Seller Artist</h2>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2  row-cols-lg-4 row-cols-lg-5 g-5 ">
+                @foreach($featuredArtists as $key=>$artist)
+                    <div class="d-flex align-items-center justify-content-start">
+                        <span class="text-black-50 me-3">
+                            {{sprintf('%02d',$key + 1)}}
+                        </span>
+                        <img class="border border-1 rounded-pill" style="width: 3.5rem; aspect-ratio: 1/1"
+                             src="{{asset($artist->image)}}"
+                             alt="">
+                        <div class="ms-3">
+                            <a href="" class="fw-bold mb-0 fs-5 d-block text-primary text-decoration-none">
+                                {{$artist->username}}
+                            </a>
+                            <span>
+                                Rp. {{number_format($artist->balance, 2, ',', '.')}}
+                            </span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <section class="my-5">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2>NFT Artwork</h2>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">NFT Artwork</h2>
                 <form action="{{request()->url()}}" method="GET">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="search" value="{{request()->get("search")}}"
@@ -102,7 +128,5 @@
                 {{$nfts->withQueryString()->links()}}
             </div>
         </div>
-
     </section>
-    <!-- EXPLORE SECTION END -->
 @endsection

@@ -122,10 +122,10 @@ class NFTController extends Controller
 
         })->orderBy($sort_column, $direction)->paginate(20);
 
-
+        $featuredArtists = User::orderBy('balance', 'desc')->limit(12)->get();
         $categories = Category::all();
 
-        return view('explore', compact("nfts", 'categories'));
+        return view('explore', compact("nfts", 'categories', 'featuredArtists'));
     }
 
 }
