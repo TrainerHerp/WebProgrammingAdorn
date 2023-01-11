@@ -48,9 +48,13 @@
             </div>
           @endif
         @else
-          <h4 class="mt-5 text-center">
-            <a href="/login" class="text-tertiary text-decoration-none">Login To Buy NFT</a>
-          </h4>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-outline-primary btn-lg justify-content-center mt-5">
+              <h5 class="m-0">
+                <a href="/login" class="text-tertiary text-decoration-none">Login To Buy NFT</a>
+              </h5>
+            </button>
+          </div>
         @endauth
       </div>
     </div>
