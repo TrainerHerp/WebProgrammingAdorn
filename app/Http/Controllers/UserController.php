@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -99,4 +104,55 @@ class UserController extends Controller
 
         return view('rankings')->with(['user' => $user]);
     }
+
+    public function register(Request $request) {
+        $rules = [
+            'email' => 'required|email:rfc,dns|unique:users,email',
+            'username' => 'required|min:5|unique:users,username',
+            'password' => 'required|min:5',
+            'password-confirm' => 'required_with:password|same:password|min:5',
+            'image' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+          return back()->withErrors($validator);
+        }
+
+        $image = $request->file('image');
+        $imageName = $image->getClientOriginalName();
+
+        Storage::putFileAs('public/image', $image, $imageName);
+        $imageUrl = 'storage/image/'.$imageName;
+
+        $newUser = User::create([
+          'username' => $request->username,
+          'email' => $request->email,
+          'password' => Hash::make($request->password),
+          'image' => $imageUrl,
+        ]);
+
+        User::create(['id' => $newUser->id]);
+
+        return redirect('/login');
+      }
+
+      public function login(Request $request) {
+        $credentials = [
+          'email' => $request->email,
+          'password' => $request->password
+        ];
+
+        if(Auth::attempt($credentials)){
+          if($request->remember){
+            Cookie::queue('email', $request->email, 120);
+            Cookie::queue('password', $request->password, 120);
+          }
+          return redirect('/');
+        }
+        return back()->withErrors([
+          'fail' => 'Wrong Email/Password'
+        ]);
+      }
 }

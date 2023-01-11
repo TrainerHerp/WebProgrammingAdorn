@@ -27,7 +27,11 @@ Route::resource('nft', NFTController::class);
 
 Route::get('/login', [UserController::class, 'viewLogin']);
 
+Route::post('/login', [UserController::class, 'login']);
+
 Route::get('/register', [UserController::class, 'viewRegister']);
+
+Route::post('/register', [UserController::class, 'register']);
 
 Route::get('/rankings', [UserController::class, 'viewRankings']);
 

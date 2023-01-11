@@ -324,6 +324,10 @@ header > nav a {
     }
 }
 
+.login-register {
+    padding-bottom: 3.6rem;
+}
+
 /* Login/Register End */
 
 /* FOOTER */
