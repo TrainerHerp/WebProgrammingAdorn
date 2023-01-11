@@ -5,7 +5,7 @@
         <img src="{{ asset('image/adorn/LogoAdorn.1.png') }}" class="img-fluid" />
       </div>
     </a>
-    <a class="navbar-brand me-auto" style="left: 50px; font-weight: bolder; font-size: 30px" href="./index.html">Adorn</a>
+    <a class="navbar-brand me-auto" style="left: 50px; font-weight: bolder; font-size: 30px" href="/">Adorn</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto me-5">
         <li class="nav-item">
