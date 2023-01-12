@@ -15,26 +15,21 @@
               <div class="row align-items-center justify-content-center py-3" style="width:100%;">
                 <div class="col-12 d-flex align-items-center justify-content-between">
                   <div class="my-2">
-                    <h1 id="sellerName">Radit Putra</h1>
+                    <h1 id="sellerName">{{ $user->fullname }}</h1>
                   </div>
                   <div class="pb-3">
-                    <span class="fw-bold"><i class="fa fa-calendar me-2" aria-hidden="true"></i>Joined February
-                      2022</span>
+                    <span class="fw-bold"><i class="fa fa-calendar me-2" aria-hidden="true"></i>Joined
+                      {{ $user->join_date }}</span>
                   </div>
                 </div>
                 <div class="col-12">
-                  <h5 class="mb-4">~Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. </p>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-outline-primary">Follow me for more content!</button>
+                  <h5 class="mb-4">@ {{ $user->username }}</h5>
+                  <p>{{ $user->bio }}</p>
                 </div>
               </div>
             </div>
             <div class="col-6 text-center card-featured-nft" style="border-radius: 10px;">
-              <img id="sellerPhoto" src="./images/explore-man-1.jpg" style="height: 25rem; box-shadow: 16px 16px #025959;"
+              <img id="sellerPhoto" src="{{ asset($user->image) }}" style="height: 25rem; box-shadow: 16px 16px #025959;"
                 alt="..." class="rounded shadow-sm">
             </div>
           </div>
@@ -54,12 +49,6 @@
               <a class="nav-link btn-lg btn-nav-pill px-4" id="created_tab" data-bs-toggle="tab" data-bs-target="#created"
                 type="button" role="tab" aria-controls="created" aria-selected="true">
                 <span style="font-size: 1.1rem; color: black;">Created</span>
-              </a>
-            </li>
-            <li class="nav-item mb-3" role="presentation">
-              <a class="nav-link btn-lg btn-nav-pill px-4" id="favorited_tab" data-bs-toggle="tab"
-                data-bs-target="#favorited" type="button" role="tab" aria-controls="favorited" aria-selected="false">
-                <span style="font-size: 1.1rem; color: black;">Favorited</span>
               </a>
             </li>
           </ul>

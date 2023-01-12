@@ -9,12 +9,13 @@
     <div class="row">
       <div class="col-5 me-4">
         <div class="current-nft rounded-3">
-          <img id="transactionNFTImage" src="{{ $nft->image }}" class="card-img-top img-fluid" alt="{{ $nft->name }}" />
+          <img id="transactionNFTImage" src="{{ asset($nft->image) }}" class="card-img-top img-fluid"
+            alt="{{ $nft->name }}" />
         </div>
       </div>
       <div class="col-6 border border-2 border-primary p-4 rounded-3">
         <div class="profile d-flex align-items-center">
-          <img src={{ '/' . $owner->image }} alt="">
+          <img src="{{ asset($owner->image) }}" alt="">
           <h6 class="text-black-50 m-1">
             <a href="/user/{{ $owner->id }}" class="text-tertiary text-decoration-none"
               id="transactionSeller">{{ $owner->username }}</a>
@@ -24,7 +25,7 @@
           {{ $nft->name }}
         </h2>
         <p class="mt-2">
-          {{ $nft->description }}
+        <h6>{{ $nft->description }}</h6>
         </p>
         @if ($creator->id == $owner->id)
           <h5 class="mt-4">Price: Rp {{ $nft->price }}</h5>

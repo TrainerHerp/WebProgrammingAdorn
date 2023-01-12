@@ -51,7 +51,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('profile', ['user' => $user]);
     }
 
     /**
@@ -105,7 +106,8 @@ class UserController extends Controller
         return view('rankings')->with(['user' => $user]);
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $rules = [
             'email' => 'required|email:rfc,dns|unique:users,email',
             'username' => 'required|min:5|unique:users,username',
@@ -116,43 +118,44 @@ class UserController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
 
-        if($validator->fails()){
-          return back()->withErrors($validator);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
         }
 
         $image = $request->file('image');
         $imageName = $image->getClientOriginalName();
 
         Storage::putFileAs('public/image', $image, $imageName);
-        $imageUrl = 'storage/image/'.$imageName;
+        $imageUrl = 'storage/image/' . $imageName;
 
         $newUser = User::create([
-          'username' => $request->username,
-          'email' => $request->email,
-          'password' => Hash::make($request->password),
-          'image' => $imageUrl,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'image' => $imageUrl,
         ]);
 
         User::create(['id' => $newUser->id]);
 
         return redirect('/login');
-      }
+    }
 
-      public function login(Request $request) {
+    public function login(Request $request)
+    {
         $credentials = [
-          'email' => $request->email,
-          'password' => $request->password
+            'email' => $request->email,
+            'password' => $request->password
         ];
 
-        if(Auth::attempt($credentials)){
-          if($request->remember){
-            Cookie::queue('email', $request->email, 120);
-            Cookie::queue('password', $request->password, 120);
-          }
-          return redirect('/');
+        if (Auth::attempt($credentials)) {
+            if ($request->remember) {
+                Cookie::queue('email', $request->email, 120);
+                Cookie::queue('password', $request->password, 120);
+            }
+            return redirect('/');
         }
         return back()->withErrors([
-          'fail' => 'Wrong Email/Password'
+            'fail' => 'Wrong Email/Password'
         ]);
-      }
+    }
 }
