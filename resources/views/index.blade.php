@@ -46,40 +46,13 @@
     </header>
 
     {{-- Part 2 --}}
-    <section class="statistic-numbers bg-dark container-fluid py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="text-white">
-                        <div class="d-flex justify-content-center">
-                            <div class="text-center px-5">
-                                <h1 class="fw-bold">
-                                    <span class="value">74000</span>
-                                </h1>
-                                <h6 class="text-white-50 fw-light">Artwork</h6>
-                            </div>
-                            <div class="text-center px-5">
-                                <h1 class="fw-bold value">16000</h1>
-                                <h6 class="text-white-50">Auction</h6>
-                            </div>
-                            <div class="text-center px-5">
-                                <h1 class="fw-bold value">9000</h1>
-                                <h6 class="text-white-50">Artists</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     {{-- Most Popular - New --}}
     <section class="bg-light container-fluid py-5">
         <div class="container">
             <h2 class="text-center">Most Popular Arts</h2>
             <div class="row row-cols-1 row-cols-md-4 g-4 m-2 most-popular">
                 @foreach ($popular as $pop)
-                    <div class="col">
+                    {{-- {{-- <div class="col">
                         <div class="card h-100 text-center mb-3" style="...">
                             <div class="card-img-container">
                                 <img class="card-img" src="{{ '/' . $pop['image'] }}" alt="Image Not Found" style="...">
@@ -88,10 +61,28 @@
                                 <h5 class="card-title">{{ $pop->name }}</h5>
                                 <h5 class="card-text mb-0 fw-bold text-dark">Rp.{{ $pop->price }}</h5>
                             </div>
-                            <div class="flex">
+                            <div class="flex"> --}}
                                 {{-- UPDATE --}}
-                                <a href="/nft/{{ $pop->id }}" type="submit" class="btn btn-primary w-100">Buy</a>
+                                {{-- <a href="/nft/{{ $pop->id }}" type="submit" class="btn btn-primary w-100">Buy</a>
                             </div>
+                        </div>
+                    </div> --}}
+                    <div>
+                        <div class="position-relative">
+                            <img class="img-fluid nft-image" src="{{asset($pop->image)}}" alt="">
+                            <span
+                                class="d-block position-absolute category-badge py-1 px-2">{{$pop->category->name ?? ''}}</span>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-between align-items-end">
+                            <div>
+                                <h5 class="mb-1">{{$pop->name}}</h5>
+                                <h4 class="mb-0 fw-bold">
+                                    Rp. {{number_format($pop->price, 2, ',', '.')}}
+                                </h4>
+                            </div>
+                            <a href="{{route('nft.show', $pop->id)}}" class="btn-outline-primary btn">
+                                Buy
+                            </a>
                         </div>
                     </div>
                 @endforeach

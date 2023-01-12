@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NFT;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -154,6 +155,11 @@ class UserController extends Controller
 
     public function viewProfile()
     {
+        $id = auth()->user()->id;
+        $nft = NFT::all();
+        $nft_created = $nft->where('creator_id', '=', $id);
+        $nft_owned = $nft->where('owner_id', '=', $id)->where('creator_id', '!=', $id);
+
         return view('profile', [
             'username' => auth()->user()->username,
             'email' => auth()->user()->email,
@@ -161,6 +167,8 @@ class UserController extends Controller
             'balance' => auth()->user()->balance,
             'created_at' => auth()->user()->created_at,
             'bio' => auth()->user()->bio,
+            'nft_created' => $nft_created,
+            'nft_owned' => $nft_owned,
         ]);
     }
 

@@ -1,3 +1,5 @@
+{{-- @dd($nft_owned) --}}
+
 @extends('layouts.template')
 
 @section('title')
@@ -54,35 +56,69 @@
               </a>
             </li>
           </ul>
+
         </div>
-        {{-- <div class="col-12 px-5 pt-3 mb-4">
+        <div class="col-12 px-5 pt-3 mb-4">
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active collection" id="collection" role="tabpanel"
-                aria-labelledby="collection_tab">
-                <div style="height: 50vh;">
+              <div class="tab-pane fade show active collection" id="collection" role="tabpanel" aria-labelledby="collection_tab">
+                {{-- <div style="height: 50vh;">
                   <h3 class="text-center mt-3">Empty</h3>
+                </div> --}}
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-5">
+                    @foreach($nft_owned as $post)
+                        {{-- <div class="col-4">
+                            <div class="card explore-card shadow">
+                                <img src="{{ asset($post->image) }}" alt="">
+                                <p>{{ $post->name }}</p>
+                            </div>
+                        </div> --}}
+                        <div>
+                            <div class="position-relative">
+                                <img class="img-fluid nft-image" src="{{asset($post->image)}}" alt="">
+                                <span
+                                    class="d-block position-absolute category-badge py-1 px-2">{{$post->category->name ?? ''}}</span>
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between align-items-end">
+                                <div>
+                                    <h5 class="mb-1">{{$post->name}}</h5>
+                                    <h4 class="mb-0 fw-bold">
+                                        Rp. {{number_format($post->price, 2, ',', '.')}}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
               </div>
 
               <div class="tab-pane fade show created" id="created" role="tabpanel" aria-labelledby="created_tab">
-                <div class="row align-items-center justify-content-start">
-                  <div class="col-4">
-                    <div class="card explore-card shadow">
-                      <img src="./images/nft-explore-4.jpg" style="height: 15rem" class="card-img-top" alt="..." />
-                      <div class="card-body text-center pb-0">
-                        <h4 class="card-title mb-3">CAKRAWALA</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-4">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-5">
+                    @foreach($nft_created as $item)
+                        <div>
+                            <div class="position-relative">
+                                <img class="img-fluid nft-image" src="{{asset($item->image)}}" alt="">
+                                <span
+                                    class="d-block position-absolute category-badge py-1 px-2">{{$item->category->name ?? ''}}</span>
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between align-items-end">
+                                <div>
+                                    <h5 class="mb-1">{{$item->name}}</h5>
+                                    <h4 class="mb-0 fw-bold">
+                                        Rp. {{number_format($item->price, 2, ',', '.')}}
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                  {{-- <div class="col-4">
                     <div class="card explore-card shadow">
                       <img src="./images/nft-explore-5.jpg" style="height: 15rem" class="card-img-top" alt="..." />
                       <div class="card-body text-center pb-0">
                         <h4 class="card-title mb-3">LANGIT</h4>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                 </div>
               </div>
 
@@ -99,7 +135,7 @@
               </div>
             </div>
           </div>
-        </div> --}}
+        </div>
       </div>
     </div>
   </div>

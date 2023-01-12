@@ -20,9 +20,9 @@
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="(5-20 letters)" value="{{ $username }}" required>
             </div>
-            <div class="mb-3" style="height: 5rem">
-                <label for="bio" class="form-label">Address</label>
-                <input type="text" class="form-control" id="bio" name="bio" value="{{ $bio }}" placeholder="(min 5 letters)" required>
+            <div class="mb-5" style="height: 5rem">
+                <label for="bio" class="form-label">Bio</label>
+                <textarea type="text" class="form-control" id="bio" name="bio" placeholder="(min 5 letters)" required>{{ $bio }}</textarea>
             </div>
         </form>
         <button type="submit" form="profile-form" value="profile-submit" class="btn btn-primary">Save Changes</button>

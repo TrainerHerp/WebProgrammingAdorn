@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("username")->unique();
             $table->string("email")->unique();
             $table->string("password");
-            $table->string("image")->default(""); // kasih gambar avatar
+            $table->string("image")->default("image/user/default-avatar.png"); // kasih gambar avatar
             $table->decimal("balance", 16)->default(0);
             $table->string("bio")->default("");
             $table->string("join_date")->default(Carbon::now()->format("d F Y"));
