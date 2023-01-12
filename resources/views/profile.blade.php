@@ -109,6 +109,13 @@
                                     </h4>
                                 </div>
                             </div>
+                            @if($item->owner_id == $item->creator_id)
+                                <form action="/nft/{{ $item->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mt-3">Delete</button>
+                                </form>
+                            @endif
                         </div>
                     @endforeach
                   {{-- <div class="col-4">

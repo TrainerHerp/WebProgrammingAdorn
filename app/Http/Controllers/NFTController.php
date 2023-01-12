@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\NFT;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class NFTController extends Controller
 {
@@ -32,7 +34,9 @@ class NFTController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('add_item', ['categories' => $categories]);
     }
 
     /**
@@ -43,7 +47,45 @@ class NFTController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required|min:5|max:20',
+            'description' => 'required|min:5',
+            'price' => 'required|numeric|min:1000',
+            'category' => 'required',
+            'image' => 'required'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+
+        $id = auth()->user()->id;
+
+        $name = $request->name;
+        $description = $request->description;
+        $price = $request->price;
+        $category = $request->category;
+
+        $image = $request->file('image');
+        $imageName = $image->getClientOriginalName();
+
+        Storage::putFileAs('public/img', $image, $imageName);
+        $imageUrl = 'storage/img/'.$imageName;
+
+        NFT::create([
+            'name' => $name,
+            'description' => $description,
+            'image' => $imageUrl,
+            'price' => $price,
+            'category_id' => $category,
+            'owner_id' => $id,
+            'creator_id' => $id,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s")
+        ]);
+        return redirect('/explore');
     }
 
     /**
@@ -93,9 +135,11 @@ class NFTController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(NFT $nft)
     {
-        //
+        $nft->delete();
+
+        return redirect('profile');
     }
 
     public function viewExplore(Request $request)
