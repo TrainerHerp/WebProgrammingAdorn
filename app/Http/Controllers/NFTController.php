@@ -14,7 +14,7 @@ class NFTController extends Controller
     public function __construct()
     {
 
-        $this->middleware('auth')->only("show");
+        $this->middleware('auth')->only("show", "create", "store");
     }
 
     /**

@@ -37,6 +37,7 @@
           </div>
           {{-- Edit Profile --}}
           <a href="/edit-profile" class="btn btn-primary" style="width:5rem; height:2rem; padding:0.2rem; margin-left:8rem">Edit</a>
+          <a href="/nft/create" class="btn btn-primary" style="width:10rem; height:2rem; padding:0.2rem; margin-left:1rem">Add Your Own NFT</a>
         </div>
         <div class="col-12 mt-5 px-5">
           <h1 class="text-center mb-4 fw-bold">Activities</h1>

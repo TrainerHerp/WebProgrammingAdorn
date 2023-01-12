@@ -8,8 +8,8 @@
     @if(session()->has('unauthorized_msg'))
         {{ session()->get('unauthorized_msg') }}
     @endif
-        <div class="col-md-5 form-animation">
-            <h2 class="mb-4">Add Item</h2>
+        <div class="form-animation container py-5">
+            <h2 class="mb-4 text-center">Add Item</h2>
             @if ($errors->any())
                 <div class="text-center"><strong class="text-danger">{{ $errors->first() }}</strong></div>
             @endif

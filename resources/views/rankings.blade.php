@@ -22,9 +22,9 @@
                         <th>Username</th>
                         <th>Worth</th>
                     </tr>
-                    @foreach ($user as $use)
+                    @foreach ($user as $key=>$use)
                         <tr>
-                            <th scope='row'>{{ $loop->iteration }}</th>
+                            <th scope='row'>{{ $key+1 }}</th>
                             <td>
                                 <a href="{{route('user.show', $use->id)}}">
                                     <img src="{{ '/' . $use['image'] }}" class="rounded-circle"
@@ -42,10 +42,6 @@
                     @endforeach
                     </tbody>
                 </table>
-            </div>
-            <div class="m-5 d-flex justify-content-center">
-                {{-- PAGINATION NAVIGATION --}}
-                {{ $user->withQueryString()->links() }}
             </div>
         </div>
     </section>

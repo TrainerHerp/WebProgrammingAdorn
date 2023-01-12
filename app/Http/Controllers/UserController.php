@@ -144,7 +144,7 @@ class UserController extends Controller
 
     public function viewRankings()
     {
-        $user = User::orderBy('balance', 'DESC')->paginate(6);
+        $user = User::orderBy('balance', 'DESC')->get();
 
         return view('rankings')->with(['user' => $user]);
     }
