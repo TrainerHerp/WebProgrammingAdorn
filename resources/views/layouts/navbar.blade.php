@@ -26,9 +26,9 @@
                   <a class="dropdown-item px-2" href="/profile">Account</a>
                 </li>
                 <li>
-                  <button id="navbar-logout-button" class="btn btn-danger">
+                  <a href="/logout" id="navbar-logout-button" class="btn btn-danger">
                     Logout
-                  </button>
+                  </a>
                 </li>
               </ul>
             </div>
