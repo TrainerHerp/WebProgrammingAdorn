@@ -19,7 +19,8 @@
                              src="{{asset($artist->image)}}"
                              alt="">
                         <div class="ms-3">
-                            <a href="" class="fw-bold mb-0 fs-5 d-block text-primary text-decoration-none">
+                            <a href="{{route('user.show', $artist->id)}}"
+                               class="fw-bold mb-0 fs-5 d-block text-primary text-decoration-none">
                                 {{$artist->username}}
                             </a>
                             <span>

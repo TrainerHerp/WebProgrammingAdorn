@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('title')
-  Rankings
+    Rankings
 @endsection
 
 @section('content')
@@ -12,30 +12,34 @@
                 <div class="col-6 d-flex align-items-center justify-content-center mx-auto" style="margin-bottom: 2rem">
                     <h3 class="fw-bold mb-0">Top Seller</h3>
                 </div>
-                <table class="table table-striped table-dark table-hover table-bordered text-center" style="border: white">
+                <table class="table table-striped table-dark table-hover table-bordered text-center"
+                       style="border: white">
                     <tbody>
-                        {{-- New --}}
-                        <tr>
+                    {{-- New --}}
+                    <tr>
                         <th>Rank</th>
                         <th>Profile</th>
                         <th>Username</th>
                         <th>Worth</th>
-                        </tr>
-                        @foreach ($user as $use)
+                    </tr>
+                    @foreach ($user as $use)
                         <tr>
-                        <th scope='row'>{{ $loop->iteration }}</th>
+                            <th scope='row'>{{ $loop->iteration }}</th>
                             <td>
-                            <img src="{{ '/'.$use['image'] }}" class="rounded-circle"
-                                style="height: 3rem; width: 3rem" alt="User Image" />
+                                <a href="{{route('user.show', $use->id)}}">
+                                    <img src="{{ '/' . $use['image'] }}" class="rounded-circle"
+                                         style="height: 3rem; width: 3rem"
+                                         alt="User Image"/>
+                                </a>
                             </td>
                             <td class="text-white align-middle">
-                            <h6>{{ $use['username'] }}</h6>
+                                <h6>{{ $use['username'] }}</h6>
                             </td>
                             <td class="text-white align-middle">
-                            <h6>{{ $use['balance'] }}</h6>
+                                <h6>{{ $use['balance'] }}</h6>
                             </td>
                         </tr>
-                        @endforeach
+                    @endforeach
                     </tbody>
                 </table>
             </div>

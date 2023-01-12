@@ -27,7 +27,7 @@ Route::resource('nft', NFTController::class);
 
 Route::get('/login', [UserController::class, 'viewLogin']);
 
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/register', [UserController::class, 'viewRegister']);
 

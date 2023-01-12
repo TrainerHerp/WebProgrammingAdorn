@@ -21,9 +21,9 @@
                         The world's largest marketplace for non fungible token <br/>
                         (NFT) artist and collector!
                     </p>
-                    <button class="btn btn-primary btn-lg mt-4 fw-light">
+                    <a href="/explore" class="btn btn-primary btn-lg mt-4 fw-light">
                         Get Started
-                    </button>
+                    </a>
                 </div>
                 <div class="col-6 d-flex justify-content-center">
                     <div class="card card-featured-nft">
@@ -62,11 +62,11 @@
                                 <h5 class="card-text mb-0 fw-bold text-dark">Rp.{{ $pop->price }}</h5>
                             </div>
                             <div class="flex"> --}}
-                                {{-- UPDATE --}}
-                                {{-- <a href="/nft/{{ $pop->id }}" type="submit" class="btn btn-primary w-100">Buy</a>
-                            </div>
-                        </div>
-                    </div> --}}
+                    {{-- UPDATE --}}
+                    {{-- <a href="/nft/{{ $pop->id }}" type="submit" class="btn btn-primary w-100">Buy</a>
+                </div>
+            </div>
+        </div> --}}
                     <div>
                         <div class="position-relative">
                             <img class="img-fluid nft-image" src="{{asset($pop->image)}}" alt="">
@@ -136,9 +136,11 @@
                         <tr>
                             <th scope='row'>{{ $loop->iteration }}</th>
                             <td>
-                                <img src="{{ '/' . $use['image'] }}" class="rounded-circle"
-                                     style="height: 3rem; width: 3rem"
-                                     alt="User Image"/>
+                                <a href="{{route('user.show', $use->id)}}">
+                                    <img src="{{ '/' . $use['image'] }}" class="rounded-circle"
+                                         style="height: 3rem; width: 3rem"
+                                         alt="User Image"/>
+                                </a>
                             </td>
                             <td class="text-white align-middle">
                                 <h6>{{ $use['username'] }}</h6>

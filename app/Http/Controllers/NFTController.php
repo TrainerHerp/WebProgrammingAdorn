@@ -9,6 +9,12 @@ use App\Models\User;
 
 class NFTController extends Controller
 {
+    public function __construct()
+    {
+
+        $this->middleware('auth')->only("show");
+    }
+
     /**
      * Display a listing of the resource.
      *
