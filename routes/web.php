@@ -33,8 +33,6 @@ Route::get('/register', [UserController::class, 'viewRegister']);
 
 Route::get('/logout', [UserController::class, 'logout']);
 
-Route::post('/register', [UserController::class, 'register']);
-
 Route::get('/rankings', [UserController::class, 'viewRankings']);
 
 Route::get('/profile', [UserController::class, 'viewProfile']);

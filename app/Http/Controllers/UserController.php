@@ -40,7 +40,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'email' => 'required|email:rfc,dns|unique:users,email',
+            'fullname' => 'required|min:5',
+            'username' => 'required|min:5|unique:users,username',
+            'password' => 'required|min:5',
+            'password-confirm' => 'required_with:password|same:password|min:5',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        User::create([
+            'username' => $request->username,
+            'fullname' => $request->fullname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect('/login');
     }
 
     /**
@@ -106,40 +127,6 @@ class UserController extends Controller
         return view('rankings')->with(['user' => $user]);
     }
 
-    public function register(Request $request)
-    {
-        $rules = [
-            'email' => 'required|email:rfc,dns|unique:users,email',
-            'username' => 'required|min:5|unique:users,username',
-            'password' => 'required|min:5',
-            'password-confirm' => 'required_with:password|same:password|min:5',
-            'image' => 'required',
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator);
-        }
-
-        $image = $request->file('image');
-        $imageName = $image->getClientOriginalName();
-
-        Storage::putFileAs('public/image', $image, $imageName);
-        $imageUrl = 'storage/image/' . $imageName;
-
-        $newUser = User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'image' => $imageUrl,
-        ]);
-
-        User::create(['id' => $newUser->id]);
-
-        return redirect('/login');
-    }
-
     public function login(Request $request)
     {
         $credentials = [
@@ -159,41 +146,45 @@ class UserController extends Controller
         ]);
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         return redirect('/login');
-      }
+    }
 
-    public function viewProfile(){
+    public function viewProfile()
+    {
         return view('profile', [
-          'username' => auth()->user()->username,
-          'email' => auth()->user()->email,
-          'image' => auth()->user()->image,
-          'balance' => auth()->user()->balance,
-          'created_at' => auth()->user()->created_at,
-          'bio' => auth()->user()->bio,
-        ]);
-      }
-
-    public function viewEditProfile() {
-        return view('edit_profile', [
-          'username' => auth()->user()->username,
-          'bio' => auth()->user()->bio,
+            'username' => auth()->user()->username,
+            'email' => auth()->user()->email,
+            'image' => auth()->user()->image,
+            'balance' => auth()->user()->balance,
+            'created_at' => auth()->user()->created_at,
+            'bio' => auth()->user()->bio,
         ]);
     }
 
-    public function editProfile(Request $request){
+    public function viewEditProfile()
+    {
+        return view('edit_profile', [
+            'username' => auth()->user()->username,
+            'bio' => auth()->user()->bio,
+        ]);
+    }
+
+    public function editProfile(Request $request)
+    {
         $user = User::find(auth()->user()->id);
 
         $rules = [
-          'username' => 'required|min:5|max:20|unique:users,username,'.$user->id,
-          'bio' => 'required|min:1',
+            'username' => 'required|min:5|max:20|unique:users,username,' . $user->id,
+            'bio' => 'required|min:1',
         ];
 
         $validator = Validator::make($request->all(), $rules);
 
-        if($validator->fails()){
-          return back()->withErrors($validator);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
         }
 
         $user['username'] = $request->username;
@@ -201,5 +192,5 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/profile');
-      }
+    }
 }

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string("password");
             $table->string("image")->default(""); // kasih gambar avatar
             $table->decimal("balance", 16)->default(0);
-            $table->string("bio");
+            $table->string("bio")->default("");
             $table->string("join_date")->default(Carbon::now()->format("d F Y"));
             $table->timestamps();
         });
