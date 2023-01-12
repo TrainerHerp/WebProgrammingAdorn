@@ -42,3 +42,5 @@ Route::get('/edit-profile', [UserController::class, 'viewEditProfile']);
 Route::patch('/edit-profile', [UserController::class, 'editProfile']);
 
 Route::get('/explore', [NFTController::class, 'viewExplore']);
+
+Route::post('/buy/{id}', [NFTController::class, 'buy']);

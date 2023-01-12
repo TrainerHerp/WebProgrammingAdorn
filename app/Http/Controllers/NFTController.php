@@ -100,7 +100,7 @@ class NFTController extends Controller
 
     public function viewExplore(Request $request)
     {
-//        get column
+        //        get column
         $sort_column = 'nft.created_at';
         $direction = 'desc';
         if ($request->has("sort")) {
@@ -125,7 +125,6 @@ class NFTController extends Controller
             if ($request->has('search')) {
                 $query->where("nft.name", 'like', "%{$request->query('search')}%");
             }
-
         })->orderBy($sort_column, $direction)->paginate(20);
 
         $featuredArtists = User::orderBy('balance', 'desc')->limit(12)->get();
@@ -134,4 +133,16 @@ class NFTController extends Controller
         return view('explore', compact("nfts", 'categories', 'featuredArtists'));
     }
 
+    public function buy($id)
+    {
+        $nft = NFT::find($id);
+
+        $nft->owner_id = auth()->user()->id;
+        $creator = User::find($nft->creator_id);
+        $creator->balance = $creator->balance + $nft->price;
+        $creator->save();
+
+        $nft->save();
+        return redirect('/profile');
+    }
 }

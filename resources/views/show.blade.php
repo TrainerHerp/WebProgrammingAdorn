@@ -36,6 +36,7 @@
           @if ($creator->id == $owner->id && Auth::user()->id != $owner->id)
             <div class="mt-4">
               <form id="placeBidForm" class="w-75 mb-3" action="/buy/{{ $nft->id }}" method="post">
+                @csrf
                 <div class="input-group">
                   <button class="btn btn-primary" type="submit">Buy NFT</button>
                   <select class="form-select">
