@@ -35,4 +35,10 @@ Route::post('/register', [UserController::class, 'register']);
 
 Route::get('/rankings', [UserController::class, 'viewRankings']);
 
+Route::get('/profile', [UserController::class, 'viewProfile']);
+
+Route::get('/edit-profile', [UserController::class, 'viewEditProfile']);
+
+Route::patch('/edit-profile', [UserController::class, 'editProfile']);
+
 Route::get('/explore', [NFTController::class, 'viewExplore']);

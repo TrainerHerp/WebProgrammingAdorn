@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,7 @@ class UserSeeder extends Seeder
             'image' => "image/user/Kelsie.jpg",
             'balance' => 230000,
             'bio' => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus accusantium magnam consequuntur aliquid atque obcaecati libero, et assumenda neque, id debitis magni veritatis ipsum deleniti dolorum mollitia repudiandae unde earum laudantium error.",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('users')->insert([
@@ -34,6 +36,7 @@ class UserSeeder extends Seeder
             'image' => "image/user/Stevie.jpg",
             'balance' => 310000,
             'bio' => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus accusantium magnam consequuntur aliquid atque obcaecati libero, et assumenda neque, id debitis magni veritatis ipsum deleniti dolorum mollitia repudiandae unde earum laudantium error.",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('users')->insert([
@@ -44,6 +47,7 @@ class UserSeeder extends Seeder
             'image' => "image/user/Philip.jpg",
             'balance' => 160000,
             'bio' => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus accusantium magnam consequuntur aliquid atque obcaecati libero, et assumenda neque, id debitis magni veritatis ipsum deleniti dolorum mollitia repudiandae unde earum laudantium error.",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('users')->insert([
@@ -54,6 +58,7 @@ class UserSeeder extends Seeder
             'image' => "image/user/Kaiden.jpg",
             'balance' => 80000,
             'bio' => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus accusantium magnam consequuntur aliquid atque obcaecati libero, et assumenda neque, id debitis magni veritatis ipsum deleniti dolorum mollitia repudiandae unde earum laudantium error.",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('users')->insert([
@@ -64,6 +69,7 @@ class UserSeeder extends Seeder
             'image' => "image/user/Marion.jpg",
             'balance' => 0,
             'bio' => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus accusantium magnam consequuntur aliquid atque obcaecati libero, et assumenda neque, id debitis magni veritatis ipsum deleniti dolorum mollitia repudiandae unde earum laudantium error.",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
         DB::table('users')->insert([
@@ -74,6 +80,7 @@ class UserSeeder extends Seeder
             'image' => "image/user/Lilia.jpg",
             'balance' => 30000,
             'bio' => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus accusantium magnam consequuntur aliquid atque obcaecati libero, et assumenda neque, id debitis magni veritatis ipsum deleniti dolorum mollitia repudiandae unde earum laudantium error.",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
     }
 }

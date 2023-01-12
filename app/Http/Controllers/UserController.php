@@ -158,4 +158,43 @@ class UserController extends Controller
             'fail' => 'Wrong Email/Password'
         ]);
     }
+
+    public function viewProfile(){
+        return view('profile', [
+          'username' => auth()->user()->username,
+          'email' => auth()->user()->email,
+          'image' => auth()->user()->image,
+          'balance' => auth()->user()->balance,
+          'created_at' => auth()->user()->created_at,
+          'bio' => auth()->user()->bio,
+        ]);
+      }
+
+    public function viewEditProfile() {
+        return view('edit_profile', [
+          'username' => auth()->user()->username,
+          'bio' => auth()->user()->bio,
+        ]);
+    }
+
+    public function editProfile(Request $request){
+        $user = User::find(auth()->user()->id);
+
+        $rules = [
+          'username' => 'required|min:5|max:20|unique:users,username,'.$user->id,
+          'bio' => 'required|min:1',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+          return back()->withErrors($validator);
+        }
+
+        $user['username'] = $request->username;
+        $user['bio'] = $request->bio;
+        $user->save();
+
+        return redirect('/profile');
+      }
 }

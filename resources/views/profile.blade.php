@@ -14,25 +14,27 @@
             <div class="col-6">
               <div class="row align-items-center justify-content-center py-3" style="width:100%;">
                 <div class="col-12 d-flex align-items-center justify-content-between">
-                  <div class="my-2">
-                    <h1 id="sellerName">{{ $user->fullname }}</h1>
+                    <div class="my-2">
+                    <h1 id="sellerName">{{ $username }}</h1>
                   </div>
                   <div class="pb-3">
                     <span class="fw-bold"><i class="fa fa-calendar me-2" aria-hidden="true"></i>Joined
-                      {{ $user->join_date }}</span>
+                      {{ $created_at }}</span>
                   </div>
                 </div>
                 <div class="col-12">
-                  <h5 class="mb-4">@ {{ $user->username }}</h5>
-                  <p>{{ $user->bio }}</p>
+                  <h5 class="mb-4">@ {{ $username }}</h5>
+                  <p>{{ $bio }}</p>
                 </div>
               </div>
             </div>
             <div class="col-6 text-center card-featured-nft" style="border-radius: 10px;">
-              <img id="sellerPhoto" src="{{ asset($user->image) }}" style="height: 25rem; box-shadow: 16px 16px #025959;"
+              <img id="sellerPhoto" src="{{ asset($image) }}" style="height: 25rem; box-shadow: 16px 16px #025959;"
                 alt="..." class="rounded shadow-sm">
             </div>
           </div>
+          {{-- Edit Profile --}}
+          <a href="/edit-profile" class="btn btn-primary" style="width:5rem; height:2rem; padding:0.2rem; margin-left:8rem">Edit</a>
         </div>
         <div class="col-12 mt-5 px-5">
           <h1 class="text-center mb-4 fw-bold">Activities</h1>
@@ -53,7 +55,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-12 px-5 pt-3 mb-4">
+        {{-- <div class="col-12 px-5 pt-3 mb-4">
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active collection" id="collection" role="tabpanel"
@@ -97,7 +99,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>

@@ -23,7 +23,7 @@
               </button>
               <ul class="dropdown-menu text-center" aria-labelledby="navbar-profile-name">
                 <li>
-                  <a class="dropdown-item px-2" href="/user/{{ Auth::user()->id }}">Account</a>
+                  <a class="dropdown-item px-2" href="/profile">Account</a>
                 </li>
                 <li>
                   <button id="navbar-logout-button" class="btn btn-danger">
