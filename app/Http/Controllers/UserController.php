@@ -79,8 +79,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-//        $user = User::find($id);
-//        return view('seller_profile', ['user' => $user]);
+        //        $user = User::find($id);
+        //        return view('seller_profile', ['user' => $user]);
         $nft = NFT::all();
         $nft_created = $nft->where('creator_id', '=', $user->id);
         $nft_owned = $nft->where('owner_id', '=', $user->id)->where('creator_id', '!=', $user->id);
@@ -215,6 +215,16 @@ class UserController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator);
         }
+
+        if ($request->image) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+
+            Storage::putFileAs('public/img', $image, $imageName);
+            $imageUrl = 'storage/img/' . $imageName;
+            $user['image'] = $imageUrl;
+        }
+
 
         $user['username'] = $request->username;
         $user['bio'] = $request->bio;
